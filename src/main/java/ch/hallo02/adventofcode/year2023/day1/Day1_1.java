@@ -1,58 +1,32 @@
-package ch.hallo02.adventofcode.year2023;
+package ch.hallo02.adventofcode.year2023.day1;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-public class Day1_2 {
-// 54824
+public class Day1_1 {
+    // 55386
 
     public static void main(String[] args) {
-        Map<String, Integer> matches = new HashMap<>();
-
-        matches.putAll(Map.of("0", 0,
-                "1", 1,
-                "2", 2,
-                "3", 3,
-                "4", 4,
-                "5", 5,
-                "6", 6,
-                "7", 7,
-                "8", 8,
-                "9", 9));
-        matches.putAll(Map.of(
-                "one", 1,
-                "two", 2,
-                "three", 3,
-                "four", 4,
-                "five", 5,
-                "six", 6,
-                "seven", 7,
-                "eight", 8,
-                "nine", 9));
-
+        List<Character> matches = List.of('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
         int sum = puzzle.lines()
                 .mapToInt(line -> {
-                    Integer firstPos, firstValue, lastPos, lastValue;
-                    firstPos = firstValue = lastPos = lastValue = null;
-
-                    for (String key : matches.keySet()) {
-                        int foundFirstIdx = line.indexOf(key);
-                        if (foundFirstIdx > -1 && (firstPos == null || foundFirstIdx < firstPos)) {
-                            firstPos = foundFirstIdx;
-                            firstValue = matches.get(key);
-                        }
-
-                        int foundLastIdx = line.lastIndexOf(key);
-                        if (foundLastIdx > -1 && (lastPos == null || foundLastIdx > lastPos)) {
-                            lastPos = foundLastIdx;
-                            lastValue = matches.get(key);
+                    Character first = null;
+                    Character last = null;
+                    char[] chars = line.toCharArray();
+                    for (int i = 0; i < chars.length; i++) {
+                        char c = chars[i];
+                        if (matches.contains(c)) {
+                            first = first == null ? c : first;
+                            last = c;
                         }
                     }
-                    return firstValue * 10 + lastValue;
-                })
-                .sum();
+                    var combined = Integer.valueOf(first + "" + last);
+                    System.out.println(combined);
+                    return Integer.valueOf(combined);
+                }).sum();
         System.out.println(sum);
+
     }
+
 
     private static String puzzle = """
             9dlvndqbddghpxc
