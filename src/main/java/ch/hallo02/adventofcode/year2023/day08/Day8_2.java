@@ -1,4 +1,4 @@
-package ch.hallo02.adventofcode.year2023.day8;
+package ch.hallo02.adventofcode.year2023.day08;
 
 import java.math.BigInteger;
 import java.util.*;

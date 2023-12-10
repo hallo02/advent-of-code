@@ -1,4 +1,4 @@
-package ch.hallo02.adventofcode.year2023.day7;
+package ch.hallo02.adventofcode.year2023.day07;
 
 import java.util.HashMap;
 import java.util.List;

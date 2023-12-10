@@ -1,8 +1,6 @@
-package ch.hallo02.adventofcode.year2023.day4;
+package ch.hallo02.adventofcode.year2023.day04;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Day4_1 {
     public static void main(String... args) {

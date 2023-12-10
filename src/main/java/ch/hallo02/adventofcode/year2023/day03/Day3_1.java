@@ -1,4 +1,4 @@
-package ch.hallo02.adventofcode.year2023.day3;
+package ch.hallo02.adventofcode.year2023.day03;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

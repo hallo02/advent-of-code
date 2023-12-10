@@ -1,7 +1,6 @@
-package ch.hallo02.adventofcode.year2023.day4;
+package ch.hallo02.adventofcode.year2023.day04;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 // not 1390824429

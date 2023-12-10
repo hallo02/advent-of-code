@@ -1,6 +1,4 @@
-package ch.hallo02.adventofcode.year2023.day2;
-
-import java.sql.SQLOutput;
+package ch.hallo02.adventofcode.year2023.day02;
 
 public class Day2_2 {
     // 70768

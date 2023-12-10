@@ -1,4 +1,4 @@
-package ch.hallo02.adventofcode.year2023.day5;
+package ch.hallo02.adventofcode.year2023.day05;
 
 import java.util.*;
 import java.util.stream.LongStream;
