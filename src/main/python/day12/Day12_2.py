@@ -6,6 +6,8 @@ import re
 from functools import cache
 
 
+# win 1909291258644
+
 def parse_input(s: str, multiplier=1) -> list[tuple[str, list[int]]]:
     def map_line(line: str) -> tuple[str, list[int]]:
         report, group_sizes = line.split()
@@ -20,7 +22,7 @@ test_input = './test.txt'
 full_input = './full.txt'
 
 
-def part_1_and_2(s: str, mutliplier=1) -> int:#
+def part_1_and_2(s: str, mutliplier=1) -> int:  #
     def calculate_arrangement(records: tuple[str, list[int]]) -> int:
         s, nums = records
         s = re.sub(r'(\.+)', '-', s.strip('.')) + '-'  # .split(' - ')

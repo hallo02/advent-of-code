@@ -14,7 +14,7 @@ import static java.util.stream.Collectors.toList;
 
 public class Day12_2 {
 
-    //
+    // not working
     public static void main(String... args) {
 
         var r = miniPuzzle.lines()
