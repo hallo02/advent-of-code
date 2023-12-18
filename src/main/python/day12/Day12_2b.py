@@ -1,12 +1,5 @@
 from functools import cache
 
-def parse_input(s: str, multiplier=1) -> list[tuple[str, list[int]]]:
-    def map_line(line: str) -> tuple[str, list[int]]:
-        report, group_sizes = line.split()
-        return ((report.strip() + '?') * multiplier)[:-1], [int(x) for x in group_sizes.strip().split(',')] * multiplier
-
-    with open(s) as input_file:
-        return [map_line(line) for line in input_file.readlines()]
 
 
 def arrangements(springs, checksums) -> int:

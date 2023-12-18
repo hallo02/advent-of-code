@@ -1,18 +1,14 @@
-package ch.hallo02.adventofcode.year2023.Day16;
+package ch.hallo02.adventofcode.year2023.day16;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-import static ch.hallo02.adventofcode.year2023.Day16.Day16_1.Direction.*;
+import static ch.hallo02.adventofcode.year2023.day16.Day16_2.Direction.*;
 
-public class Day16_1 {
+public class Day16_2 {
 
-    // not 401
-    // not 6815, too low
-    // win: 6921
-
+    // win 7594
     static Set<Tuple> visited;
-    static Deque<Tuple> toDo = new LinkedList<>();
+    static Deque<Tuple> toDo;
     static char[][] area;
 
     static class Tuple {
@@ -46,16 +42,66 @@ public class Day16_1 {
     }
 
     public static void main(String... args) {
-        visited = new HashSet<Tuple>();
+
+        long max = 0;
         area = getArea(puzzle);
-        toDo.add(new Tuple(0, 0, RIGHT));
-        walk();
-        System.out.println(
-                visited.stream()
-                        .map(t -> new Tuple(t.line, t.position, null))
-                        .distinct()
-                        .count()
-        );
+
+        // from above
+        System.out.println("above");
+        for (int i = 0; i < area[0].length; i++) {
+            visited = new HashSet<>();
+            toDo = new LinkedList<>();
+            toDo.add(new Tuple(0, i, DOWN));
+            walk();
+            long amount = visited.stream()
+                    .map(t -> new Tuple(t.line, t.position, null))
+                    .distinct()
+                    .count();
+            max = amount > max ? amount : max;
+        }
+
+        // from left
+        System.out.println("left");
+        for (int i = 0; i < area.length; i++) {
+            visited = new HashSet<>();
+            toDo = new LinkedList<>();
+            toDo.add(new Tuple(i, 0, RIGHT));
+            walk();
+            long amount = visited.stream()
+                    .map(t -> new Tuple(t.line, t.position, null))
+                    .distinct()
+                    .count();
+            max = amount > max ? amount : max;
+        }
+
+        // from below
+        System.out.println("below");
+        for (int i = 0; i < area[0].length; i++) {
+            visited = new HashSet<>();
+            toDo = new LinkedList<>();
+            toDo.add(new Tuple(area.length - 1, i, UP));
+            walk();
+            long amount = visited.stream()
+                    .map(t -> new Tuple(t.line, t.position, null))
+                    .distinct()
+                    .count();
+            max = amount > max ? amount : max;
+        }
+
+        // from right
+        System.out.println("right");
+        for (int i = 0; i < area.length; i++) {
+            visited = new HashSet<>();
+            toDo = new LinkedList<>();
+            toDo.add(new Tuple(i, area[0].length - 1, LEFT));
+            walk();
+            long amount = visited.stream()
+                    .map(t -> new Tuple(t.line, t.position, null))
+                    .distinct()
+                    .count();
+            max = amount > max ? amount : max;
+        }
+        System.out.println(max);
     }
 
     static Tuple getUnseenTupleOrNull() {
