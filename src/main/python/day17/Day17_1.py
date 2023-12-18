@@ -1,16 +1,14 @@
 import heapq
 
+
 # 1302 too high
 # Function to calculate the minimum cost using Dijkstra's algorithm
 def find_cheapest_path(grid: list[list[int]]) -> int:
-    print(grid)
     if not grid or not grid[0]:
         return 0
 
     rows = len(grid)
     cols = len(grid[0])
-    print("rows0", rows)
-    print("cols0", cols)
 
     # Create a 2D array to store the minimum cost from the start cell to each cell
     costs = [[float('inf')] * cols for _ in range(rows)]
@@ -22,9 +20,9 @@ def find_cheapest_path(grid: list[list[int]]) -> int:
 
     # Create a min heap to store the cells with the current minimum cost
     min_heap = [(costs[0][0], 0, 0, {directions[0]: 0,
-                           directions[1]: 0,
-                           directions[2]: 0,
-                           directions[3]: 0}
+                                     directions[1]: 0,
+                                     directions[2]: 0,
+                                     directions[3]: 0}
                  )]
 
     # Perform Dijkstra's algorithm
@@ -61,7 +59,12 @@ def find_cheapest_path(grid: list[list[int]]) -> int:
 
                     heapq.heappush(min_heap, (new_cost, new_row, new_col, next_steps))
 
+    visual(route, rows, cols)
+    # Return the minimum cost to reach the destination cell
+    return costs[rows - 1][cols - 1]
 
+
+def visual(route, rows, cols):
     leset = set()
     r = rows - 1
     c = cols - 1
@@ -69,20 +72,10 @@ def find_cheapest_path(grid: list[list[int]]) -> int:
         leset.add((r, c))
         r, c = route[(r, c)]
         leset.add((r, c))
-
-    sum = 0
-    for (r,c) in leset:
-        sum = sum + grid[r][c]
-    print("sum", sum)
-
     print_it(rows, cols, leset)
-    # Return the minimum cost to reach the destination cell
-    return costs[rows - 1][cols - 1]
 
 
 def print_it(rows, cols, leset):
-    print("rows", rows)
-    print("cols", cols)
     for r in range(rows):
         s = ""
         for c in range(cols):
@@ -113,6 +106,6 @@ heat_map = [
     [4, 2, 1, 1, 2]
 ]
 
-#print(find_cheapest_path(heat_map))
-#print(find_cheapest_path(parse_input("full.txt")))
+# print(find_cheapest_path(heat_map))
+# print(find_cheapest_path(parse_input("full.txt")))
 print(find_cheapest_path(parse_input("test.txt")))
